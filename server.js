@@ -176,8 +176,8 @@ io.sockets.on('connection', function(socket) {
 							});
 			return;
 		}
-		var message = payload.username;
-		if(('undefined' === typeof username) || !username){
+		var message = payload.message;
+		if(('undefined' === typeof message) || !message){
 			var error_message = 'send_message didn\'t specify a message, command aborted';
 			log(error_message);
 			socket.emit('send_message_response', {
