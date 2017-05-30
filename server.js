@@ -148,8 +148,8 @@ io.sockets.on('connection', function(socket) {
 		log('join_room success');
 	});
 	
-	socket.on('disconnect',function(socket){
-		log('Client disconnected ' +JSON.stringify(players[socket.id]));
+	socket.on('disconnect',function(){
+		log('Client disconnected '+JSON.stringify(players[socket.id]));
 		
 		if('undefined' !== typeof players[socket.id] && players[socket.id]) {
 			var username = players[socket.id].username;
