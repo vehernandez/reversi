@@ -59,10 +59,10 @@ socket.on('join_room_response',function(payload){
 		
 		nodeA.addClass('w-100');
 		
-		nodeB.addClass('col-9 text-right');
+		nodeB.addClass('col-10 text-right');
 		nodeB.append('<h4>' +payload.username+ '</h4>');
 		
-		nodeC.addClass('col-3 text-left');
+		nodeC.addClass('col-2');
 		var buttonC = makeInviteButton(payload.socket_id);
 		nodeC.append(buttonC);
 		
@@ -231,7 +231,7 @@ function makeInviteButton(socket_id) {
 }
 
 function makeInvitedButton(socket_id) {
-	var newHTML = '<button type=\"button\" class=\"btn btn-primary\">Invited</button>';
+	var newHTML = '<button type=\"button\" class=\"btn btn-primary\">Invite Sent</button>';
 	var newNode = $(newHTML);
 	newNode.click(function() {
 		uninvite(socket_id);
@@ -240,7 +240,7 @@ function makeInvitedButton(socket_id) {
 }
 
 function makePlayButton(socket_id) {
-	var newHTML = '<button type=\"button\" class=\"btn btn-success\">Play</button>';
+	var newHTML = '<button type=\"button\" class=\"btn btn-success\">Accept Invite</button>';
 	var newNode = $(newHTML);
 	newNode.click(function() {
 		game_start(socket_id);
@@ -367,10 +367,10 @@ socket.on('game_update',function(payload) {
 					$('#'+row+'_'+column).html('<img src="assets/images/blk_to_empty.gif" alt="empty square" />');
 				}
 				else if(old_board[row][column] == 'w' && board[row][column] == 'b') {
-					$('#'+row+'_'+column).html('<img src="assets/images/wht_to_blk.gif" alt="black token" />');
+					$('#'+row+'_'+column).html('<img src="assets/images/wht_to_blk.gif?t=' + (new Date().getTime()) + '" alt="black token" />');
 				}
 				else if(old_board[row][column] == 'b' && board[row][column] == 'w') {
-					$('#'+row+'_'+column).html('<img src="assets/images/blk_to_wht.gif" alt="white token" />');
+					$('#'+row+'_'+column).html('<img src="assets/images/blk_to_wht.gif?t=' + (new Date().getTime()) + '" alt="white token" />');
 				}
 				else {
 					$('#'+row+'_'+column).html('<img src="assets/images/error.gif" alt="error" />');

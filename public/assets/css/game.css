@@ -1,10 +1,44 @@
 @charset "UTF-8";
 /* CSS Document */
 
-body {
+body.game {
 	background-image: url("../images/green.png");
 }
 
+#header-row {
+	background-image: url("../images/green_textured.png");
+}
+
+h2 {
+	color: #fff !important;
+}
+
+.navBtn {
+	width: 200px;
+}
+
+.marginleft {
+	margin-left: 3px;
+}
+
+/* glowing/flashing button, revised from codepen.io BY Muhammad Arslan Aslam */
+@-webkit-keyframes glowing {
+  0% { -webkit-box-shadow: 0 0 3px #cfc; }
+  50% { -webkit-box-shadow: 0 0 40px #FF0000; }
+  100% { -webkit-box-shadow: 0 0 3px #cfc; }
+}
+@keyframes glowing {
+  0% { box-shadow: 0 0 3px #cfc; }
+  50% { box-shadow: 0 0 40px #fff; }
+  100% { box-shadow: 0 0 3px #cfc; }
+}
+.enterBtn {
+  -webkit-animation: glowing 1500ms infinite;
+  animation: glowing 1500ms infinite;
+}
+
+
+/* In-Game styles */
 table#game_board {
 	margin: auto;
 	border-style: solid;
