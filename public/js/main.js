@@ -42,12 +42,14 @@ socket.on('join_room_response',function(payload){
 	if(payload.socket_id == socket.id){
 		return;
 	}
+
 	
 	/* If someone joined then add a new row to the lobby table */
 	var dom_elements = $('.socket_' +payload.socket_id);
 	
 	/* If we don't already have an entry for this person */
 	if(dom_elements.length == 0) {
+		
 		var nodeA = $('<div></div>');
 		nodeA.addClass('socket_' +payload.socket_id);
 		
@@ -59,12 +61,12 @@ socket.on('join_room_response',function(payload){
 		
 		nodeA.addClass('w-100');
 		
-		nodeB.addClass('col-10 text-right');
-		nodeB.append('<h4>' +payload.username+ '</h4>');
+		nodeB.addClass('col-4 mt-2 pr-1 text-right');
+		var buttonB = makeInviteButton(payload.socket_id);
+		nodeB.append(buttonB);
 		
-		nodeC.addClass('col-2');
-		var buttonC = makeInviteButton(payload.socket_id);
-		nodeC.append(buttonC);
+		nodeC.addClass('col-8 mt-2 pl-0 text-left');
+		nodeC.append('<h4 class="p-1">' +payload.username+ '</h4>');
 		
 		nodeA.hide();
 		nodeB.hide();
@@ -72,9 +74,9 @@ socket.on('join_room_response',function(payload){
 		$('#players').append(nodeA, nodeB, nodeC);
 		nodeA.slideDown(1000);
 		nodeB.slideDown(1000);
-		nodeC.slideDown(1000);
-		
+		nodeC.slideDown(1000);		
 	}
+	
 	/* If we have seen the person who just joined (something weird happened) */
 	else {
 		uninvite(payload.socket_id);
@@ -263,6 +265,8 @@ $(function(){
 	socket.emit('join_room',payload);
 	
 	$('#quit').append('<a href="lobby.html?username='+username+'" class="btn btn-danger btn-default active" role="button" aria-pressed="true">Quit</a>');
+	
+	$('#welcome').append('<h4>Welcome, '+username+'</h4>');
 });
 
 /* Code for the board specifically */
@@ -310,8 +314,8 @@ socket.on('game_update',function(payload) {
 		return;
 	}
 	
-	$('#my_color').html('<h3 id="my_color">I am '+my_color+'</h3>');
-	$('#my_color').append('<h4>It is '+payload.game.whose_turn+'\'s turn. Elapsed time <span id="elapsed"></span></h4>');
+	$('#assignedColor').html('<h3 id="my_color" style="color:'+my_color+'">I am '+my_color+'</h3>');
+	$('#sums').html('<h4 style="color:#ccc;">It is '+payload.game.whose_turn+'\'s turn. Elapsed time <span id="elapsed"></span></h4>');
 	
 	clearInterval(interval_timer);
 	interval_timer = setInterval(function(last_time){

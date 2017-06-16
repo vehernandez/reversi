@@ -13,20 +13,28 @@
   <body class="game">
    	<div class="container-fluid text-center">
    		<div class="row">
-   			<div class="offset-2 col text-center">
-   					<h3 id="my_color"> </h3>
-   			</div>
-   			<div class="col-2">
+<!--   			<div class="offset-2 col text-center">
+   					
+   			</div>-->
+   			<div class="col text-right">
    				<div id="quit"> </div>
    			</div>
    		</div>
    		<div class="row">
-   			<div class="col">
-   				<span class="align-middle " id="whitesum"> </span>
+   			<div class="col-4 text-right">
+   				<span class="align-middle mr-2" id="whitesum"></span>
    				<img src="assets/images/empty_to_wht.gif" alt="white score" />
-   				<img src="assets/images/empty_to_blk.gif" alt="black score" />
-   				<span class="align-middle" id="blacksum"> </span>
    			</div>
+   			<div class="col-4">
+   				<div class="mt-4" id="assignedColor"></div>
+   			</div>
+   			<div class="col-4 text-left">
+   				<img src="assets/images/empty_to_blk.gif" alt="black score" />
+   				<span class="align-middle ml-2" id="blacksum"></span>
+   			</div>
+   		</div>
+   		<div class="row">
+   			<div class="col" id="sums"></div>
    		</div>
     	<div class="row">
    			<div class="col" id="game_over"> </div>
