@@ -264,7 +264,7 @@ $(function(){
 	console.log('*** Client Log Message: \'join.room\' payload: '+JSON.stringify(payload));
 	socket.emit('join_room',payload);
 	
-	$('#quit').append('<a href="lobby.html?username='+username+'" class="btn btn-danger btn-default active" role="button" aria-pressed="true">Quit</a>');
+	$('#quit').append('<a href="lobby.html?username='+username+'" class="btn btn-danger btn-default active" role="button" aria-pressed="true">Return to Lobby</a>');
 	
 	$('#welcome').append('<h4>Welcome, '+username+'</h4>');
 });
@@ -314,8 +314,8 @@ socket.on('game_update',function(payload) {
 		return;
 	}
 	
-	$('#assignedColor').html('<h3 id="my_color" style="color:'+my_color+'">I am '+my_color+'</h3>');
-	$('#sums').html('<h4 style="color:#ccc;">It is '+payload.game.whose_turn+'\'s turn. Elapsed time <span id="elapsed"></span></h4>');
+	$('#assignedColor').html('<h3 id="my_color" style="color:'+my_color+'">I am '+my_color+' pearl</h3>');
+	$('#timer').html('<h4 style="color:#fff49d;">It is '+payload.game.whose_turn+' pearl\'s turn. Elapsed time <span id="elapsed"></span></h4>');
 	
 	clearInterval(interval_timer);
 	interval_timer = setInterval(function(last_time){
@@ -327,10 +327,10 @@ socket.on('game_update',function(payload) {
 			var seconds = Math.floor((elapsedmilli % (60 * 1000))/1000);
 			
 			if(seconds < 10){
-				$('#elapsed').html(minutes+': 0'+seconds);
+				$('#elapsed').html(minutes+':0'+seconds);
 			}
 			else {
-				$('#elapsed').html(minutes+': '+seconds);
+				$('#elapsed').html(minutes+':'+seconds);
 			}
 		}}(payload.game.last_move_time)		
 		, 1000);
@@ -427,6 +427,6 @@ socket.on('game_over',function(payload) {
 	}
 	
 	/* Jump to a new page */
-	$('#game_over').html('<h1>Game Over</h1><h2>'+payload.who_won+' won!</h2>');
-	$('#game_over').append('<a href="lobby.html?username='+username+'" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Return to the lobby</a>');
+	$('#game_over').html('<h1>Game Over</h1><h2>'+payload.who_won+' pearl won!</h2>');
+	//$('#game_over').append('<a href="lobby.html?username='+username+'" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Return to the lobby</a>');
 });

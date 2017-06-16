@@ -943,10 +943,10 @@ function send_game_update(socket, game_id, message) {
 		/* Send a game over message */
 		var winner = 'tie game';
 		if(black > white){
-			winner = 'black';
+			winner = 'black pearl';
 		}
 		if(white > black){
-			winner = 'white';
+			winner = 'white pearl';
 		}
 		var success_data = {
 								result: 'success',
