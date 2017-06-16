@@ -23,23 +23,32 @@
    				<h2>Enter A Username to Play</h2>
    			</div>
    		</div>
+   		<div class="row mt-1 mb-1">
+   			<div class="col">
+   				<a href="index.html" class="btn btn-info float-right">Return Home</a>
+   			</div>
+   		</div> 
    		<div class="row">
    			<div class="col text-left">
-				<p class="text-gray-dark mt-3">Your username can be anything you want it to be, however, it should not contain spaces.<br>
-   				<span class="text-muted">(*otherwise, it will add special characters in the space and look strange)</span></p>
    				<p class="text-gray-dark">Once you enter your username, you will be directed to the game lobby where you will be able to invite others players to play.</p>
+   				<p class="text-gray-dark">If you do not enter a username, a random anonymous name will be created for you.</p>
    			</div>
-   		</div>
-   		
+   		</div>		
    		<div class="row">
    			<div class="col">
    				<form onSubmit="submitForm(); return false;" class="form-inline">
    					<div class="form-group" style="margin-bottom: 0px;">
-   						<label for="username" class="col-form-label sr-only">Enter Username</label>
-						<input class="form-control" type="text" value="" size="25" id="username" placeholder="Enter username" />
+   						<label for="username" class="col-form-label sr-only">example: anonymous_1</label>
+						<input class="form-control" type="text" value="" size="25" id="username" placeholder="example: anonymous_1" />
    					</div>
-   					<button type="submit" class="btn btn-default btn-primary marginleft">Done</button>
+   					<button type="submit" class="btn btn-default btn-primary marginleft">Submit</button>
    				</form>
+   			</div>
+		</div>
+  		<div class="row">
+   			<div class="col text-left">
+				<div class="text-muted mt-1"><span class="text-warning">Warning:</span> <span class="small">You can include special characters in your username, however, do not include spaces or emojis. Otherwise, it will appear funky...you have been warned.</span></div>
+   				<!--<span class="text-muted">(*otherwise, it will add special characters in the space and look strange)</span></p>-->
    			</div>
    		</div>
    	</div>

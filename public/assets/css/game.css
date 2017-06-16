@@ -6,7 +6,9 @@ body.main {
 }
 
 body.game {
-	background-image: url("../images/green_textured.png");
+	/* used free wallpaper from Google, no copywrights found */
+	background-image: url("../images/pirate-wallpaper2.jpg");
+	background-size: 100%;
 }
 
 #header-row {
@@ -92,6 +94,8 @@ table#game_board td {
 
 #messages p {
 	margin: 0px;
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
 td.hovered_over:hover {
