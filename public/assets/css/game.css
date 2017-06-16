@@ -92,7 +92,11 @@ table#game_board td {
 	border-color: rgb(50,50,50);
 }
 
-#messages p {
+.messages_lobby p {
+	margin: 0px;
+}
+
+.messages_game p {
 	margin: 0px;
 	color: #fff;
 	background-color: rgba(0, 0, 0, 0.5);
